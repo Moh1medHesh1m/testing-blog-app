@@ -63,14 +63,14 @@ export class AuthService {
         return user
     }
 
-    async validateUser(payload:any): Promise<User> {
-       const {sub}= payload
-       console.log(payload.sub+"aho")
-        const user = await this.userservice.findonebyid(sub);
-        if (!user) return null;
+    // async validateUser(payload:any): Promise<User> {
+    //    const {sub}= payload
+    //    console.log(payload.sub+"aho")
+    //     const user = await this.userservice.findonebyid(sub);
+    //     if (!user) return null;
     
-        const { _id, name, email} = user;
-        // return { _id, email, name} as User;
-      }
+    //     const { _id, name, email} = user;
+    //     // return { _id, email, name} as User;
+    //   }
 
 }

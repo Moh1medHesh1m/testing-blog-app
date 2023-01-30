@@ -8,6 +8,7 @@ import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
+import { PostModule } from './post/post.module';
 
 
 
@@ -15,7 +16,8 @@ import { AuthModule } from './auth/auth.module';
   imports: [  
     UsersModule,
     DatabaseModule,
-    AuthModule
+    AuthModule,
+    PostModule
   ],
   controllers:[AppController],
   providers: [AppService],

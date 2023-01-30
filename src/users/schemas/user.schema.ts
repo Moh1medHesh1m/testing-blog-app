@@ -8,7 +8,7 @@ export type UserDocument = User & Document;
 export class User  {
 
   @IsOptional()
-  _id: Types.ObjectId;
+  _id?: Types.ObjectId;
   @Prop({ required: true })
   name: string;
 
