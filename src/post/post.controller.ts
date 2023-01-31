@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req, Query, ParseIntPipe } from '@nestjs/common';
 import { PostService } from './post.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CommentPostDto } from './dto/comment-post.dto';
+import { skip } from 'rxjs';
 
 @Controller('post')
 export class PostController {
@@ -27,9 +28,14 @@ export class PostController {
     return await this.postService.comment(commentPostDto.commentBody,req.user.id,id)
   }
 
+  @Get()
+  async findAll(@Query('skip',ParseIntPipe) skip:number , @Query('limit', ParseIntPipe)  limit:number){
+    
+    return await this.postService.paginatePosts(skip,limit)
+  }
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.postService.findOne(+id);
+    return this.postService.paginateComments(+id);
   }
 
   @Patch(':id')

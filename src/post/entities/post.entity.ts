@@ -25,6 +25,7 @@ export class Post  {
 comments: Comment[];
 
 
+
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

@@ -59,11 +59,14 @@ export class PostService {
     
   
 
-  findAll() {
-    return `This action returns all post`;
+  async paginatePosts(skips:number,limits:number) {
+      const findall = await this.postRepoistory.find({}, {_id:false},{limit:limits,skip:skips})
+console.log(findall)
+  
+     return findall
   }
 
-  findOne(id: number) {
+  paginateComments(id: number) {
     return `This action returns a #${id} post`; 
   }
 

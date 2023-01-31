@@ -22,10 +22,14 @@ describe('PostController', () => {
   const req = {
     user
   }
+  const updateDto={
+    name:""
+  }
   const mockPostService= {
     create: jest.fn().mockImplementation(()=>Promise.resolve(stub)),
     comment: jest.fn().mockImplementation(()=>Promise.resolve(stub)),
-    findOne: jest.fn().mockImplementation(()=>Promise.resolve("hi"))
+    findOne: jest.fn().mockImplementation(()=>Promise.resolve("hi")),
+    update: jest.fn().mockImplementation(()=>Promise.resolve('sad'))
   }
 
 
@@ -60,5 +64,5 @@ describe('PostController', () => {
     expect(spy).toBeCalled()
   })
 
-
+  it('should return string')
 });
