@@ -5,7 +5,7 @@ import { UsersController } from './users.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './schemas/user.schema';
 import { AppModule } from 'src/app.module';
-import { DatabaseModule } from 'src/database/database.module';
+import { DatabaseModule } from '../database/database.module';
 // import { DatabaseModule } from 'src/database/database.module';
 
 @Module({

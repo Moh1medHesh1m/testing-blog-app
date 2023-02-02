@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.3.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^10.0.1",
     "@nestjs/mapped-types": "*",
@@ -69,6 +70,8 @@
       "json",
       "ts"
     ],
+    "globalSetup": "./test/setup.ts",
+    "globalTeardown": "./test/teardown.ts",
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {

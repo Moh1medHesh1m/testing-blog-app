@@ -5,5 +5,11 @@ export default () => ({
     mongo: {
       uri: process.env.MONGODB_URI,
     }
+
+    ,
+    MONGO_TEST:{
+      uri: process.env.MONGODB_URI_TEST
+    }
+
   });
   

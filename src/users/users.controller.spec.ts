@@ -30,9 +30,14 @@ const req = {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
-      providers:[UsersService,
-      ]
-    }).overrideProvider(UsersService).useValue(mockUserService).compile();
+      providers:[
+        {
+          provide: UsersService
+          ,
+          useValue:mockUserService
+        }]
+      
+    }).compile();
 
     controller = module.get<UsersController>(UsersController);
     service = module.get<UsersService>(UsersService);
