@@ -70,7 +70,8 @@ export class AuthService {
     //     if (!user) return null;
     
     //     const { _id, name, email} = user;
-    //     // return { _id, email, name} as User;
+        //     // return { _id, email, name} as User;
+
     //   }
 
 }

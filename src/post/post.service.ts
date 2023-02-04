@@ -1,3 +1,4 @@
+import {  SearchForMultiplePosts } from './dto/search-multiple-posts.dto';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
@@ -66,8 +67,26 @@ console.log(findall)
      return findall
   }
 
-  paginateComments(id: number) {
-    return `This action returns a #${id} post`; 
+  async searchForMultiplePosts(searchForMultiplePosts:SearchForMultiplePosts) {
+
+   const {posts} = searchForMultiplePosts
+      
+   let find =[]
+
+   
+      for (let post of posts){
+      
+        let found = await this.postRepoistory.find({_id:post.id})
+        // console.log(found)
+    
+        if(found)
+       find=  [...find,...found]
+        
+       
+      }
+ console.log(find)
+ return find   
+    
   }
 
   update(id: number, updatePostDto: UpdatePostDto) {

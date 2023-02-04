@@ -11,7 +11,6 @@ export class LocalStrategy extends PassportStrategy(Strategy){
     }
 
      validate(username:string,password:string){
-        console.log("hi")
         const user = this.authService.validate(username,password)
         if(!user){
            console.log("unauthorized sad" )
