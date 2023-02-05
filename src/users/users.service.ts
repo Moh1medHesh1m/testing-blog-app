@@ -21,18 +21,20 @@ export class UsersService {
        
     }
 
-    async createUser(user:User){
+    async createUser(user:CreateUserDto): Promise<User>{
       
-        const newUser = this.userRepository.create({
-            _id:user._id,
+        const newUser = await this.userRepository.create({
             name: user.name,
             email : user.email,
             password : await bcrypt.hash(user.password,10)
         })
-        try{
-            return await newUser
-        }
-        catch(error){console.error(error)}
+
+        return newUser
+        // try{
+         
+        //     return await newUser
+        // }
+        // catch(error){console.error(error)}
         
 
     }

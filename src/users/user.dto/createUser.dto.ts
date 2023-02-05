@@ -2,8 +2,7 @@ import { IsEmail, IsNotEmpty ,isNotEmpty} from 'class-validator';
 import { ObjectId } from 'mongoose';
 
 export class CreateUserDto {
- 
-_id:ObjectId
+
   @IsNotEmpty()
   name: string;
 
@@ -11,5 +10,5 @@ _id:ObjectId
   email: string;
 
   @IsNotEmpty()
-  password: string;
+  password?: string;
 }
