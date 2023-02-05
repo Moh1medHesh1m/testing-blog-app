@@ -50,9 +50,9 @@ export class UsersService {
 
     
     async   findonebyid(id: string){
-        console.log(id+"find")
+       
       const   user = await this.userRepository.findOne({_id:id})
-      console.log(user)
+     
       return  user
     }
 
@@ -66,9 +66,6 @@ export class UsersService {
 
 
 
-    async login(){
-
-    }
 
 
 }

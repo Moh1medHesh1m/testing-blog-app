@@ -4,13 +4,15 @@ import { Connection } from "mongoose";
 import { AppModule } from "src/app.module";
 import { AuthService } from "src/auth/auth.service";
 import { DatabaseService } from "src/database/databaseService";
+import { testUser } from "src/users/test/stubs/users.stubs";
 
 export class IntegrationTestManager {
     public httpServer: any;
   
     private app: INestApplication;
-    private accessToken: string;
+    private accessToken: any;
     private connection: Connection;
+
   
     async beforeAll(): Promise<void> {
       const moduleRef = await Test.createTestingModule({
@@ -27,8 +29,26 @@ export class IntegrationTestManager {
       this.connection = moduleRef
         .get<DatabaseService>(DatabaseService)
         .getDbHandle();
-        
-    }
 
+        const userId = await this.connection.collection('users').findOne({email:testUser.email})
+
+
+      this.accessToken = await authService.login({
+        email:testUser.email,
+        name:testUser.name,
+        password:testUser.password,
+
+      })    
+    }
+async afterAll(){
+  this.app.close( )
+}
+getCollection(collectionName:string){
+  return this.connection.collection(collectionName)
+} 
+
+getAccessToken():string{
+  return this.accessToken
+}
     
 }

@@ -22,9 +22,13 @@ export class JwtStrategy extends PassportStrategy(Strategy){
         );
     }
 
-    async validate(validationPayload:{email:string, getUserByEmail(email:string)}){
-        console.log(validationPayload.email)
-        return await this.userService.getUserByEmail(validationPayload.email)
+    // async validate(validationPayload:{id:string, findonebyid(id:string)}){
+    //     console.log(validationPayload.id)
+    //     return await this.userService.findonebyid(validationPayload.id)
+    // }
+
+    async validate (payload:any){
+        return await this.userService.findonebyid(payload.id)
     }
     // async validate(payload: any) {
     //     return { userId: payload.sub, username: payload.username };

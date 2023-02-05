@@ -20,20 +20,22 @@ constructor(
 @Post('create')
 async create(@Body() user: User){
   
-    console.log("Body")
+    
   return  this.userservice.createUser(user);
 }
+
+
 @UseGuards(JwtAuthGuard)
 @Patch("update")
 async update(@Req() req,@Body() user:UpdateUserDto){
 
-console.log(req)
-  return this.userservice.updateUser(req.user.id,user)
+
+  return  this.userservice.updateUser(req.user.id,user)
 }
 
 @Get('user-id/:id')
 async getUser(@Param('id') id){
-  console.log(id+"found")
+
  return this.userservice.findonebyid(id)
 }
 

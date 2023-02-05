@@ -31,9 +31,7 @@ export abstract class EntityRepository<T extends Document>{
     return this.entityModel.findOneAndUpdate(
       entityFilterQuery,
       updateEntityData,
-      {
-        new: true
-      }
+     
     )
   }
 

@@ -11,7 +11,9 @@ export default async (): Promise<void> => {
   await app.init();
 
   const databaseService = moduleRef.get<DatabaseService>(DatabaseService);
+  
   await databaseService.getDbHandle().dropDatabase();
+  console.log('tearrdown')
 
   await app.close();
 };

@@ -7,7 +7,7 @@ export type UserDocument = User & Document;
 @Schema({ timestamps: true })
 export class User  {
 
-  @IsOptional()
+
   _id?: Types.ObjectId;
   @Prop({ required: true })
   name: string;
